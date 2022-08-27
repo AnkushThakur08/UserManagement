@@ -479,10 +479,10 @@ module.exports = {
   /* Need to Work */
   updateUser: async (data, req, res) => {
     const userData = {
-      id: data.id,
+      id: data.userId,
       gender: data.gender,
-      age: data.Age,
-      address: data.Address,
+      age: data.age,
+      address: data.address,
     };
     console.log("USER DATA :", userData); /* User ka data frontend se */
     const user = await Service.userService.findUserById(userData);

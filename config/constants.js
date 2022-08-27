@@ -93,7 +93,7 @@ const globalConstants = {
       host: "localhost",
       name: "conversionbackend",
       user: "root",
-      password: "123456",
+      password: "root@123",
     },
     PROD: {
       host: "",
