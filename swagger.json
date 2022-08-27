@@ -1,0 +1,393 @@
+{
+  "swagger": "2.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Documentation For User Features Specification",
+    "description": "Swagger documentation for User Features Specification",
+    "contact": { "email": "atpara99@gmail.com" },
+    "license": {
+      "name": "",
+      "url": ""
+    }
+  },
+  "schemes": ["http", "https"],
+  "tags": {
+    "name": "User",
+    "description": "users api"
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "name": "Authorization",
+      "in": "header",
+      "type": "apiKey",
+      "description": "JWT Authorization header"
+    }
+  },
+  "security": [{ "bearerAuth": [] }],
+  "paths": {
+    "/api/registration": {
+      "post": {
+        "summary": "User registration",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "enter name",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Enter email",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Enter a password",
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber",
+            "in": "formData",
+            "description": "Enter PhoneNumber",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "User Registered Successfully!!",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/api/registrationSendOTP": {
+      "post": {
+        "summary": "User registration By OTP",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Enter Name",
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber",
+            "in": "formData",
+            "description": "Enter PhoneNumber",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "OTP Send Successfully!!",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/api/SendOTP": {
+      "post": {
+        "summary": "User registration By OTP",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "phoneNumber",
+            "in": "formData",
+            "description": "Enter PhoneNumber",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "OTP Send Successfully!!",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/api/verifyOTP": {
+      "post": {
+        "summary": "User registration By OTP",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "OTP",
+            "in": "formData",
+            "description": "Enter OTP",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "OTP Send Successfully!!",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/api/login": {
+      "post": {
+        "summary": "User Login",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Enter email",
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber",
+            "in": "formData",
+            "description": "Enter your phoneNumber",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Enter a password",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Successfully Login",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Unable to Login"
+          }
+        }
+      }
+    },
+
+    "/api/countAllUser": {
+      "get": {
+        "summary": "Count All Users",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Count Shown",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Unable to show the users"
+          }
+        }
+      }
+    },
+
+    "/api/sendResetPasswordMail": {
+      "post": {
+        "summary": "Send Mail",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Enter email",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Successfully Login",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Unable to Login"
+          }
+        }
+      }
+    },
+
+    "/api/countuserByPhoneNumber": {
+      "get": {
+        "summary": "Count of Users with Phone Number",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Count Shown",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Unable to show the users"
+          }
+        }
+      }
+    },
+
+    "/api/countuserByEmail": {
+      "get": {
+        "summary": "Count of Users using EMAIL",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Count Shown",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Unable to show the users"
+          }
+        }
+      }
+    },
+
+    "/api/getUserBygoogleId": {
+      "get": {
+        "summary": "Count of Users using GoogleID",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Count Shown",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Unable to show the users"
+          }
+        }
+      }
+    },
+
+    "/api/getUserByFacebookId": {
+      "get": {
+        "summary": "Count of Users using GoogleID",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Count Shown",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Unable to show the users"
+          }
+        }
+      }
+    },
+
+    "/api/updateUser": {
+      "put": {
+        "summary": "User Updation",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter User ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "formData",
+            "description": "Enter your Gender",
+            "type": "string"
+          },
+          {
+            "name": "Age",
+            "in": "formData",
+            "description": "Enter your Age",
+            "type": "string"
+          },
+          {
+            "name": "Address",
+            "in": "formData",
+            "description": "Enter your Address",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "User Data updated Successfully!!",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/api/logout": {
+      "get": {
+        "summary": "Logout User",
+        "tags": ["User"],
+        "content": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User Logout Successfully",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "User Logout Fail"
+          }
+        }
+      }
+    }
+  }
+}
