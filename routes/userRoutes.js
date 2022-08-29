@@ -168,7 +168,6 @@ router.post("/RejectInvite", (req, res) => {
   );
 });
 
-
 // FOR SOCIAL LOGIN - Facebook
 router.get(
   "/auth/facebook",
@@ -238,5 +237,25 @@ exports.signout1 = (req, res) => {
     user: "User Signout Successfully",
   });
 };
+
+// FIXME: NOTIFICATION
+router.post("/addNotification", (req, res) => {
+  return sendRespose.executeMethod(
+    userController.addNotification,
+    req.body,
+    req,
+    res
+  );
+});
+
+// TODO:
+router.get("/getNotification", (req, res) => {
+  return sendRespose.executeMethod(
+    userController.getNotification,
+    req.body,
+    req,
+    res
+  );
+});
 
 module.exports = router;

@@ -984,4 +984,44 @@ module.exports = {
       };
     }
   },
+
+  // FIXME: NOTIFICATION
+
+  addNotification: async (data, req, res) => {
+    const userData = {
+      content: data.content,
+      senderID: data.senderID,
+    };
+
+    let findData = await Service.userService.addNotification(userData);
+    if (findData) {
+      return {
+        status: 200,
+        message: "Notification Send Successfully",
+      };
+    } else {
+      return {
+        status: 400,
+        message: "Notification unable to send",
+      };
+    }
+  },
+
+  // TODO:
+
+  getNotification: async (data) => {
+    let notification = await Service.userService.getNotification();
+    if (notification) {
+      return {
+        status: 200,
+        message: "Notification Get Successfully",
+        notification: notification,
+      };
+    } else {
+      return {
+        rows: [],
+        count: 0,
+      };
+    }
+  },
 };

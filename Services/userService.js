@@ -297,3 +297,47 @@ exports.getUserByFacebookId = (data) => {
       });
   });
 };
+
+// FIXME: NOTIFICATION
+
+/* TODO: ASSOCATION */
+Model.UserModel.hasMany(Model.NotificationModel, { foreignKey: "senderID" });
+Model.NotificationModel.belongsTo(Model.UserModel, { foreignKey: "senderID" });
+
+exports.addNotification = (data) => {
+  return new Promise((resolve, reject) => {
+    Model.NotificationModel.create(data)
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        console.log("getAll err ==>>  ", error);
+      });
+  });
+};
+
+// TODO:
+exports.getNotification = (criteria) => {
+  return new Promise((resolve, reject) => {
+    Model.NotificationModel.findAndCountAll({
+      include: [
+        {
+          model: Model.UserModel,
+          attributes: [
+            "id",
+            "name",
+            "email",
+            "phoneNumber",
+            "authenticationMethod",
+          ],
+        },
+      ],
+    })
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((err) => {
+        console.log("getAll err ==>>  ", err);
+      });
+  });
+};
